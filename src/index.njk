@@ -1,0 +1,32 @@
+---
+layout: layouts/home.njk
+eleventyNavigation:
+  key: Home
+  order: 1
+---
+<div class="flex justify-center">
+  {% set latestPost = collections.posts | first %}
+  {# Latest post #}
+  <a class="w-6/12" href="{{ latestPost.url | url }}">
+    <article class="flex w-full bg-slate-300 hover:bg-white group hover:shadow-2xl transition ease-out duration-150 hover:scale-[1.01]">
+      {% image latestPost.data.coverUrl | url,
+    "Testi cover",
+    "h-52	w-80 object-cover transition ease-out duration-500 saturate-50 brightness-50 group-hover:saturate-100 group-hover:brightness-100",
+    "10vw, 10" %}
+      <div class="p-3 flex-col justify-between">
+        <p class="text-sm pb-2">{{latestPost.data.date | readableDate}}</p>
+        <h1 class="text-xl pb-2">{{latestPost.data.title}}</h1>
+        <p class="pb-2 text-sm">{{latestPost.data.description}}</p>
+        <div>
+          {% for tag in latestPost.data.tags %}
+            <span class="text-white text-xs bg-blue-500 p-1 rounded">{{tag}}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </article>
+  </a>
+
+  {% set postlist = collections.post | head(-6) %}
+  {% set postslistCounter = collections.post | length %}
+  {% include "postslist.njk" %}
+</div>
