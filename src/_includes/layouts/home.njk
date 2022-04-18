@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-home
+---
+<header class="flex justify-center">
+  <span class="font-marker text-6xl text-blue-100 -rotate-2 mt-3 underline underline-offset-4">{{ metadata.title }}</span>
+</header>
+<nav class="font-marker flex justify-center">
+  <ul class="list-none mt-6">
+    <li class="inline-block relative mx-2 hover:after:underline-anim-li-hover after:underline-anim-li">
+      <a class="text-2xl text-blue-100 after:underline-anim-a" href="/archive">Archive</a>
+    </li>
+    <li class="inline-block relative mx-2 hover:after:underline-anim-li-hover after:underline-anim-li">
+      <a class="text-2xl text-blue-100" href="{{ metadata.url }}/notes">Notes</a>
+    </li>
+    <li class="inline-block relative mx-2 hover:after:underline-anim-li-hover after:underline-anim-li">
+      <a class="text-2xl text-blue-100" href="{{ metadata.url }}/about">About</a>
+    </li>
+  </ul>
+</nav>
+{{ content | safe }}
