@@ -59,6 +59,16 @@ module.exports = {
           transform: 'scaleX(1)',
           'transform-origin': 'bottom left',
         },
+        '.pseudo-link': {
+          'z-index': 1,
+          content: null,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          position: 'absolute',
+          transition: '1s',
+        },
       });
     }),
   ],

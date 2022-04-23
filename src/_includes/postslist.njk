@@ -1,17 +1,26 @@
-<ol reversed class="postlist" style="counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }}">
-  {% for post in postslist | reverse %}
-    <li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-      <a href="{{ post.url | url }}" class="postlist-link">
-        {% if post.data.title %}{{ post.data.title }}
-        {% else %}
-          <code>{{ post.url }}</code>
-        {% endif %}
-      </a>
-      <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
-      {% for tag in post.data.tags | filterTagList %}
-        {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
-        <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
-      {% endfor %}
-    </li>
-  {% endfor %}
-</ol>
+<div class="container mx-auto px-16">
+  <div class="grid grid-cols-3 gap-4">
+    {% for post in postlist | reverse %}
+      <article class="flex flex-col relative bg-slate-300 hover:bg-white group hover:shadow-2xl transition ease-out duration-150 hover:scale-[1.01]">
+        <div class="w-full">
+          {% image post.data.coverUrl | url,
+    "Testi cover",
+    "h-52 object-cover transition ease-out duration-500 saturate-50 brightness-50 group-hover:saturate-100 group-hover:brightness-100",
+    "10vw, 10" %}
+        </div>
+        <div class="p-4 flex flex-col flex-nowrap justify-items-stretch grow">
+          <p class="text-sm pb-2">{{post.data.date | readableDate}}</p>
+          <a class="before:pseudo-link" href="{{ post.url | url }}">
+            <h1 class="block text-xl pb-2">{{post.data.title}}</h1>
+          </a>
+          <p class="pb-2 text-sm grow">{{post.data.description}}</p>
+          <div class="z-10">
+            {% for tag in post.data.tags %}
+              <span class="text-white text-xs bg-blue-500 p-1 rounded z-10">{{tag}}</span>
+            {% endfor %}
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</div>

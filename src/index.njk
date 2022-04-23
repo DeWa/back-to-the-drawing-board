@@ -4,29 +4,32 @@ eleventyNavigation:
   key: Home
   order: 1
 ---
-<div class="flex justify-center">
+<div class="container mx-auto px-16">
   {% set latestPost = collections.posts | first %}
   {# Latest post #}
-  <a class="w-6/12" href="{{ latestPost.url | url }}">
-    <article class="flex w-full bg-slate-300 hover:bg-white group hover:shadow-2xl transition ease-out duration-150 hover:scale-[1.01]">
+  <article class="flex w-full my-14 relative bg-slate-300 hover:bg-white group hover:shadow-2xl transition ease-out duration-150 hover:scale-[1.01]">
+    <div class="w-full">
       {% image latestPost.data.coverUrl | url,
     "Testi cover",
-    "h-52	w-80 object-cover transition ease-out duration-500 saturate-50 brightness-50 group-hover:saturate-100 group-hover:brightness-100",
-    "10vw, 10" %}
-      <div class="p-3 flex-col justify-between">
-        <p class="text-sm pb-2">{{latestPost.data.date | readableDate}}</p>
-        <h1 class="text-xl pb-2">{{latestPost.data.title}}</h1>
-        <p class="pb-2 text-sm">{{latestPost.data.description}}</p>
-        <div>
-          {% for tag in latestPost.data.tags %}
-            <span class="text-white text-xs bg-blue-500 p-1 rounded">{{tag}}</span>
-          {% endfor %}
-        </div>
+    "h-64 w-full object-cover transition ease-out duration-500 saturate-50 brightness-50 group-hover:saturate-100 group-hover:brightness-100",
+    "20vw, 10" %}
+    </div>
+    <div class="p-4 flex flex-col justify-items-stretch">
+      <p class="text-sm pb-2">{{latestPost.data.date | readableDate}}</p>
+      <a class="before:pseudo-link" href="{{ latestPost.url | url }}">
+        <h1 class="block text-xl pb-2">{{latestPost.data.title}}</h1>
+      </a>
+      <p class="pb-2 text-sm grow">{{latestPost.data.description}}</p>
+      <div class="justify-self-end z-10">
+        {% for tag in latestPost.data.tags %}
+          <a href="google.com">
+            <span class="text-white text-xs bg-blue-500 p-1 rounded">{{tag}}</span></a>
+        {% endfor %}
       </div>
-    </article>
-  </a>
-
-  {% set postlist = collections.post | head(-6) %}
-  {% set postslistCounter = collections.post | length %}
-  {% include "postslist.njk" %}
+    </div>
+  </article>
+</a>
 </div>
+{% set postlist = collections.posts | head(-6) %}
+{% set postslistCounter = collections.posts | length %}
+{% include "postslist.njk" %}
