@@ -18,5 +18,8 @@
     "name": "Joonas Reinikka",
     "email": "hello@joonas.dev",
     "url": "https://about.joonas.dev"
+  },
+  "settings": {
+    "paginate": 6
   }
 }

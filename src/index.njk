@@ -22,8 +22,9 @@ eleventyNavigation:
       <p class="pb-2 text-sm grow">{{latestPost.data.description}}</p>
       <div class="justify-self-end z-10">
         {% for tag in latestPost.data.tags %}
-          <a href="google.com">
-            <span class="text-white text-xs bg-blue-500 p-1 rounded">{{tag}}</span></a>
+          <a href="{{ '/tags/' | url }}{{ tag }}">
+            <span class="text-white text-xs bg-blue-500 p-1 rounded">{{tag}}</span>
+          </a>
         {% endfor %}
       </div>
     </div>

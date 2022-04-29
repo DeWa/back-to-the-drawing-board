@@ -15,8 +15,10 @@
           </a>
           <p class="pb-2 text-sm grow">{{post.data.description}}</p>
           <div class="z-10">
-            {% for tag in post.data.tags %}
-              <span class="text-white text-xs bg-blue-500 p-1 rounded z-10">{{tag}}</span>
+            {% for tag in latestPost.data.tags %}
+              <a href="{{ '/tags/' | url }}{{ tag }}">
+                <span class="text-white text-xs bg-blue-500 p-1 rounded">{{tag}}</span>
+              </a>
             {% endfor %}
           </div>
         </div>
