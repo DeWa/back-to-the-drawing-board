@@ -101,21 +101,12 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter('filterTagList', filterTagList);
 
-  // Create an array of all tags
-  eleventyConfig.addCollection('tagList', function (collection) {
-    let tagSet = new Set();
-    collection.getAll().forEach((item) => {
-      (item.data.tags || []).forEach((tag) => tagSet.add(tag));
-    });
-
-    return filterTagList([...tagSet]);
-  });
-
-  eleventyConfig.addCollection('posts', (coll) => {
-    const posts = [...coll.getFilteredByGlob('src/posts/**/*.md')];
-
-    return posts.reverse();
-  });
+  eleventyConfig.addCollection('posts', require('./lib/collections/posts'));
+  eleventyConfig.addCollection('tagList', require('./lib/collections/tagList'));
+  eleventyConfig.addCollection(
+    'pagedPostsByTag',
+    require('./lib/collections/pagedPostsByTag')
+  );
 
   // Customize Markdown library and settings:
   let markdownLibrary = markdownIt({
