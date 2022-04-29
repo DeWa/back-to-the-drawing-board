@@ -3,8 +3,8 @@ title: This is my second post.
 description: This is a post on My Blogd aisjdioas joias oi hdoih doih asoidh asoidh aosidhoihsa diohsdoia doihsaiod hasoidhsao dhaishf oidhfoidsh fodhsfoi dshfoidsh fiodshfo ihdsfoi hdsiofh sdo about agile frameworks.
 date: 2018-04-01
 tags:
-  - another tag
-  - test
+  - testi
+  - toinen testi
 layout: layouts/post.njk
 cover: cover.jpg
 ---
